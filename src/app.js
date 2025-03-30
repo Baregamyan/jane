@@ -1,11 +1,8 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { HighlightablePolygon, HighlightablePolyline } from 'leaflet-highlightable-layers';
-import './scripts/leaflet-highlight.js';
 import data from './data/objects.json';
 import roads from './data/roads.json';
-// import 'leaflet-routing-machine';
-import { ROUTING_SERIVCE_URL, MAP_COORDS, MAP_TILE, MAP_ZOOM } from './scripts/const';
+import { MAP_COORDS, MAP_TILE, MAP_ZOOM } from './scripts/const';
 import pinSvg from 'bundle-text:./images/pin.svg';
 import { createElement, Landmark } from 'lucide';
 
