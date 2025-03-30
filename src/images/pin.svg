@@ -1,0 +1,13 @@
+<svg class="pin__svg" viewBox="0 0 42 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path class="pin-svg__circle" fill-rule="evenodd" clip-rule="evenodd"
+    d="M21 0C32.598 0 42 9.40202 42 21C42 31.1603 34.7844 39.6353 25.198 41.5803L21.6524 46.6575C21.5788 46.7633 21.4812 46.8497 21.3676 46.9093C21.254 46.9689 21.128 47 21 47C20.872 47 20.746 46.9689 20.6324 46.9093C20.5188 46.8497 20.4212 46.7633 20.3476 46.6575L16.802 41.5803C7.21557 39.6353 0 31.1603 0 21C0 9.40202 9.40202 0 21 0Z" />
+  <path class="pin__point"
+    d="M23 52C23 50.8954 22.1046 50 21 50C19.8954 50 19 50.8954 19 52C19 53.1046 19.8954 54 21 54C22.1046 54 23 53.1046 23 52Z" />
+  <!-- <g class="pin-svg__icon" clip-path="url(#clip0_14_121)">
+  </g> -->
+  <!-- <defs>
+    <clipPath id="clip0_14_121">
+      <rect width="20" height="20" fill="white" transform="translate(11 11)" />
+    </clipPath>
+  </defs> -->
+</svg>

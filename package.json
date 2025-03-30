@@ -1,5 +1,5 @@
 {
-  "name": "parcel-vanilla-starter",
+  "name": "jane-leaflet",
   "private": true,
   "version": "0.0.0",
   "source": "src/index.html",
@@ -7,8 +7,14 @@
     "start": "parcel",
     "build": "parcel build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "leaflet-highlightable-layers": "^4.0.4",
+    "leaflet-routing-machine": "^3.2.12",
+    "lucide": "^0.485.0"
+  },
   "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.14.3",
     "parcel": "^2.14.0"
   }
 }

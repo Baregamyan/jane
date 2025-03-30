@@ -1,8 +1,33 @@
-html {
-  color-scheme: light dark;
-  font-family: system-ui;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#map {
+  position: absolute;
+  width: 100%;
   height: 100%;
 }
+
+.pin__wrapper {
+  position: relative;
+  width: 42px;
+}
+
+.pin__icon {
+  position: absolute;
+
+  width: 28px;
+  height: 28px;
+
+  top: 5;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pin__svg {
+  fill: #121849;
+  /* fill: #0565d8; */
+}
+
+.pin__point {
+  fill: #121849;
+  /* fill: #F75751 */
+  /* fill: #F75751 */
+}
+
