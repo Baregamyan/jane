@@ -17,52 +17,31 @@ function renderMap() {
 function renderRoute() {
   L.geoJSON(roads, {
     style: {
+      // color: "#6200ea",
+      // weight: 4,
+      // opacity: 1,
+      // lineCap: "round",
+      // lineJoin: "round",
+      // dashArray: "0",
+      // className: "glowing-line"  // Можно добавить CSS-анимаци
       color: '#0565d8',
       weight: 3,
-      opacity: 1
+      opacity: 0.8,
+      lineCap: 'round',
+      lineJoin: 'round',
+      smoothFactor: 3,
+      // dashArray: '8, 8',
+    },
+    onEachFeature: function (feature, layer) {
+      if (feature.properties && feature.properties.name) {
+        layer.bindPopup(`
+        <div class="street-popup">
+            <b>Улица:</b> ${feature.properties.name}<br>
+        </div>
+`);
+      }
     }
   }).addTo(map);
-
-  // const { startCoords, endCoords } = road;
-  // console.log(startCoords)
-  // console.log(endCoords)
-  // const line = new HighlightablePolyline(
-  //   [startCoords, endCoords],
-  //   { color: '#0565d8', weight: 4, opacity: 1, raised: false }
-  // ).addTo(map);
-  // console.log('working?')
-  // console.log(road.object)
-  // new L.Layer.Highlight({ email: 'baregamyan@gmail.com' }).do({
-  //   q: 'Улица Никольская, Москва'
-  // }).addTo(map);
-
-  // const { startCoords, endCoords } = road;
-
-  // const leafletElements = L.Routing.control({
-  //   router: L.Routing.osrmv1({
-  //     serviceUrl: ROUTING_SERIVCE_URL
-  //   }),
-  //   waypoints: [
-  //     L.latLng(startCoords),
-  //     L.latLng(endCoords)
-  //   ],
-  //   lineOptions: {
-  //     styles: [{
-  //       color: '#0565d8',
-  //       opacity: .6,
-  //       weight: 3
-  //     }]
-  //   },
-  //   addWaypoints: false,
-  //   draggableWaypoints: false,
-  //   fitSelectedRoutes: false,
-  //   showAlternatives: false,
-  //   altLineOptions: { styles: [{ opacity: 0 }] },
-  //   createMarker: () => { return null; },
-  // }).addTo(map);
-
-  // // Hide Routes ui panel
-  // leafletElements._altContainer = document.createElement('div')
 }
 
 function renderPoints(map) {
@@ -81,17 +60,6 @@ function renderPoints(map) {
 
 function createPin() {
 
-  // const createMark = document.createElement('div');
-  // createElement.classList.add('pin-wrapper');
-
-  // const picture = createElement(Landmark, {
-  //   class: ['pin-svg__picture'],
-  //   stroke: '#fff'
-  // })
-}
-
-function createPin() {
-
   const pinWrapper = document.createElement('div');
   pinWrapper.classList.add('pin__wrapper');
 
@@ -100,19 +68,6 @@ function createPin() {
   pinWrapper.innerHTML = pinSvg;
   pinWrapper.appendChild(pinIcon)
 
-
-  // const tempContainer = document.createElement('div');
-
-  // tempContainer.innerHTML = pinSvg;
-
-  // const htmlPin = tempContainer.querySelector('svg');
-  // console.log(htmlPin)
-
-  // const iconWrapper = htmlPin.querySelector('.pin-svg__icon');
-
-  // htmlPin.appendChild(picture);
-
-  // console.log(icon)
 
   return L.divIcon({
     html: pinWrapper,
@@ -132,4 +87,4 @@ function createPinIcon() {
 }
 
 renderMap();
-renderRoute()
+renderRoute();
