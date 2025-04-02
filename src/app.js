@@ -1,10 +1,11 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import data from './data/objects.json';
+import objects from './data/objects.json';
 import roads from './data/roads.json';
 import { MAP_COORDS, MAP_TILE, MAP_ZOOM } from './scripts/const';
 import pinSvg from 'bundle-text:./images/pin.svg';
-import { createElement, Landmark } from 'lucide';
+import { createElement, Landmark, Church, Shrub, HeartPulse, Droplets, Drama, ShieldPlus, BriefcaseMedical } from 'lucide';
+
 
 // Create map
 const map = L.map('map').setView(MAP_COORDS, MAP_ZOOM);
@@ -17,20 +18,12 @@ function renderMap() {
 function renderRoute() {
   L.geoJSON(roads, {
     style: {
-      // color: "#6200ea",
-      // weight: 4,
-      // opacity: 1,
-      // lineCap: "round",
-      // lineJoin: "round",
-      // dashArray: "0",
-      // className: "glowing-line"  // Можно добавить CSS-анимаци
       color: '#0565d8',
       weight: 3,
       opacity: 0.8,
       lineCap: 'round',
       lineJoin: 'round',
       smoothFactor: 3,
-      // dashArray: '8, 8',
     },
     onEachFeature: function (feature, layer) {
       if (feature.properties && feature.properties.name) {
@@ -45,25 +38,24 @@ function renderRoute() {
 }
 
 function renderPoints(map) {
-  const points = data.filter((object) => object.type !== 'roads');
 
-  points.forEach((point) => {
-    const [lat, lon] = point.coords;
+  objects.forEach((point) => {
+    const { lat, lon } = point.coords;
 
-    const icon = createPin();
+    const icon = createPin(point);
 
     L.marker([lat, lon], { icon })
       .addTo(map)
-      .bindPopup(point.object)
+      .bindPopup(`${point.id}. ${point.name}`)
   })
 }
 
-function createPin() {
+function createPin(object) {
 
   const pinWrapper = document.createElement('div');
   pinWrapper.classList.add('pin__wrapper');
 
-  const pinIcon = createPinIcon();
+  const pinIcon = createPinIcon(object);
 
   pinWrapper.innerHTML = pinSvg;
   pinWrapper.appendChild(pinIcon)
@@ -78,9 +70,31 @@ function createPin() {
   })
 }
 
+function createPinIcon(object) {
+  const type = object.type;
+  let icon;
 
-function createPinIcon() {
-  return createElement(Landmark, {
+  switch (type) {
+    case 'temple':
+      icon = Church;
+      break;
+    case 'park':
+      icon = Shrub;
+      break;
+    case 'hospital':
+      icon = BriefcaseMedical;
+      break
+    case 'fountain':
+      icon = Droplets;
+      break
+    case 'theatre':
+      icon = Drama;
+      break
+    default:
+      icon = Landmark;
+  }
+
+  return createElement(icon, {
     class: 'pin__icon',
     stroke: '#fff',
   })
